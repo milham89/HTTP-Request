@@ -6,6 +6,7 @@ export 'dart:async';
 // View
 export 'ui/view/home_view.dart';
 export 'ui/view/splash_view.dart';
+export 'ui/view/detail_view.dart';
 
 // Config
 export 'config/belajar.dart';

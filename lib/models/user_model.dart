@@ -2,17 +2,19 @@ class UserModel {
   final id;
   final name;
   final description;
-  // final pictureId;
+  final pictureId;
   final city;
   final rating;
+  final Https;
 
   UserModel({
     this.id,
     this.name,
     this.description,
-    // this.pictureId,
+    this.pictureId,
     this.city,
     this.rating,
+    this.Https,
   });
 
   factory UserModel.createIdential(Map<String, dynamic> obs) {
@@ -20,7 +22,7 @@ class UserModel {
       id: obs['id'],
       name: obs['name'],
       description: obs['description'],
-      // pictureId: obs['pictureId'],
+      pictureId: obs['pictureId'],
       city: obs['city'],
       rating: obs['rating'],
     );

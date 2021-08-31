@@ -9,7 +9,7 @@ class Belajar extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
       ),
-      home: SplashView(),
+      home: HomeView(),
       onGenerateRoute: Routes().onGenerateRoute,
     );
   }

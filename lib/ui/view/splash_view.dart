@@ -12,7 +12,9 @@ class _SplashView extends State<SplashView> {
 
   splashscreenStart() async {
     var duration = const Duration(seconds: 2);
-    return Timer(duration, () {});
+    return Timer(duration, () {
+      Navigator.pushReplacementNamed(context, 'home');
+    });
   }
 
   @override

@@ -18,34 +18,49 @@ class _HomeViewState extends State<HomeView> {
               .request(ApiServices.userList()),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data!.length,
-                shrinkWrap: true,
+              return GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 12,
+                  return Card(
+                    child: ListTile(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(detail, arguments: snapshot.data[index]);
+                      },
+                      title: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 12,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                            'https://restaurant-api.dicoding.dev/images/small/${snapshot.data[index].pictureId}',
+                            width: 200,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        // Text(
+                        //   snapshot.data[index].description.toString(),
+                        //   overflow: TextOverflow.ellipsis,
+                        // ),
+                        // SizedBox(
+                        //   height: 10,
+                        // ),
+                        // Text(
+                        //   snapshot.data[index].city.toString(),
+                        //   overflow: TextOverflow.ellipsis,
+                        // ),
+                        // Text(
+                        //   snapshot.data[index].rating.toString(),
+                        // )
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            snapshot.data![index].name.toString(),
-                          ),
-                          Text(
-                            snapshot.data![index].description.toString(),
-                          ),
-                          // Image.network(
-                          //   snapshot.data![index].pictureId,
-                          // ),
-                          Text(
-                            snapshot.data![index].city.toString(),
-                          ),
-                          Text(
-                            snapshot.data![index].rating.toString(),
-                          )
-                        ],
+                      subtitle: Text(
+                        snapshot.data[index].name.toString(),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   );

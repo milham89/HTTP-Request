@@ -1,7 +1,8 @@
 import 'package:belajar/global_resources.dart';
 
 const String home = '/home';
-const String splash = '/splash';
+const String splash = '/genysplash';
+const String detail = '/viewdetail';
 
 class Routes {
   Route<dynamic> onGenerateRoute(RouteSettings setting) {
@@ -12,6 +13,14 @@ class Routes {
         break;
       case splash:
         return MaterialPageRoute(builder: (_) => SplashView());
+        break;
+      case detail:
+        UserModel user = setting.arguments;
+        return MaterialPageRoute(
+          builder: (_) => ViewDetail(
+            user: user,
+          ),
+          );
         break;
       default:
         return MaterialPageRoute(
